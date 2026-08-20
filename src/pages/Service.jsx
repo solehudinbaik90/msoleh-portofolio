@@ -20,13 +20,21 @@ export default function Service() {
                     <h3 className="title">{s.title}</h3>
                     <p className="text">{s.text}</p>
                     <div className="msoleh_tm_read_more">
-                      <a
+                      <button
+                        type="button"
                         onClick={() => setSelected(s)}
-                        role="button"
-                        tabIndex={0}
+                        style={{
+                          background: "none",
+                          border: "none",
+                          padding: 0,
+                          font: "inherit",
+                          cursor: "pointer",
+                          color: "inherit",
+                          textAlign: "inherit"
+                        }}
                       >
                         <span>Lebih Lengkap</span>
-                      </a>
+                      </button>
                     </div>
                   </div>
                 </li>
