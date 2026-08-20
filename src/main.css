@@ -3775,7 +3775,7 @@ body.dark .msoleh_tm_all_wrap .leftpart img {
 }
 
 body.dark .msoleh_tm_home .avatar .image {
-    background-image: url('../../assets/img/slider/2.jpg')!important
+    background-image: url(/2.jpg)!important
 }
 
 @media(max-width:1200px) {
