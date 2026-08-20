@@ -17,7 +17,7 @@ export default function Contact() {
     mapboxgl.accessToken = MAPBOX_TOKEN;
     const map = new mapboxgl.Map({
       container: mapContainer.current,
-      style: `https://maptiler.com{MAPBOX_TOKEN}`,
+      style: `https://maptiler.com${MAPBOX_TOKEN}`,
       center: [106.532593, -6.102504],
       zoom: 12,
     });
