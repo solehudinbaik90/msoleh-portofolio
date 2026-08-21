@@ -1,28 +1,40 @@
 import React, { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
-import mapboxgl from "mapbox-gl";
+import maplibregl from "maplibre-gl";
+import "maplibre-gl/dist/maplibre-gl.css";
 import SectionTitle from "../components/common/SectionTitle";
-import 'mapbox-gl/dist/mapbox-gl.css';
 
-
-const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN || "";
+const MAPTILER_KEY = process.env.REACT_APP_MAPTILER_KEY || "";
 
 export default function Contact() {
   const mapContainer = useRef(null);
+  const mapRef = useRef(null);
   const [form, setForm] = useState({ name: "", user_email: "", message: "" });
 
   useEffect(() => {
-    if (!MAPBOX_TOKEN || !mapContainer.current) return;
+    if (!MAPTILER_KEY || !mapContainer.current) return;
 
-    mapboxgl.accessToken = MAPBOX_TOKEN;
-    const map = new mapboxgl.Map({
+    if (mapRef.current) return;
+
+    const map = new maplibregl.Map({
       container: mapContainer.current,
-      style: `https://maptiler.com${MAPBOX_TOKEN}`,
+      style: `https://api.maptiler.com/maps/streets-v2/style.json?key=${MAPTILER_KEY}`,
       center: [106.532593, -6.102504],
-      zoom: 12,
+      zoom: 13,
     });
 
-    return () => map.remove();
+    new maplibregl.Marker({ color: "#e74c3c" })
+      .setLngLat([106.532593, -6.102504])
+      .addTo(map);
+
+    map.addControl(new maplibregl.NavigationControl(), "top-right");
+
+    mapRef.current = map;
+
+    return () => {
+      map.remove();
+      mapRef.current = null;
+    };
   }, []);
 
   const handleChange = (e) =>
@@ -34,7 +46,6 @@ export default function Contact() {
       toast.error("Please fill in all fields.");
       return;
     }
-    // Integrate with your email service (EmailJS, backend API, etc.)
     toast.success("Message sent successfully!");
     setForm({ name: "", user_email: "", message: "" });
   };
@@ -46,7 +57,11 @@ export default function Contact() {
           <SectionTitle subtitle="Kontak" title="Mari Terhubung" />
 
           <div className="map_wrap">
-            <div className="map" ref={mapContainer} style={{ width: "100%", height: 400 }} />
+            <div
+              className="map"
+              ref={mapContainer}
+              style={{ width: "100%", height: 400, borderRadius: 8 }}
+            />
           </div>
 
           <div className="fields">
