@@ -50,7 +50,7 @@ export default function News() {
                         textAlign: "inherit"
                       }}
                     >
-                      <span>Lebih Lengkap</span>
+                      <span>Buka</span>
                     </button>
                   </div>
                 </div>
