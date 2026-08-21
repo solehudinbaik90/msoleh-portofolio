@@ -65,7 +65,7 @@ export default function PortfolioModal({ item, isOpen, onClose }) {
                           <a href={s.url} target="_blank" rel="noreferrer">
                             <img
                               className="svg"
-                              src={`/assets/img/svg/social/${s.name}.svg`}
+                              src={`/assets/img/social/${s.name}.svg`}
                               alt="social"
                             />
                           </a>
