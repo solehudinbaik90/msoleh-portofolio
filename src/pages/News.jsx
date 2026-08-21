@@ -37,15 +37,9 @@ export default function News() {
                   </div>
                   <h3 className="title">{item.title}</h3>
                   <div className="msoleh_tm_read_more">
-                    <a 
-                      href="javascript:void(0)"
-                      onClick={(e) => {
-                      e.preventDefault();
-                      setSelected(item);
-                     }}
-                   >
-                    <span>Buka</span>
-                   </a>
+                    <button onClick={() => setSelected(item)}>
+                      <span>Buka</span>
+                    </button>
                   </div>
                 </div>
               </div>
