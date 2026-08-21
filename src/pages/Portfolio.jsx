@@ -28,34 +28,43 @@ export default function Portfolio() {
     } else if (item.type === "details") {
       setSelectedDetail(item);
     }
-    // type "photo" ditangani langsung oleh onClick={open} dari <Item>
+
   };
 
   return (
     <div className="container">
       <div className="msoleh_tm_portfolio">
-        <SectionTitle subtitle="Portfolio" title="Creative Portfolio" />
+        <SectionTitle subtitle="Proyek" title="Proyek Kreatif" />
 
         <div className="portfolio_filter">
           <div className="react-tabs" data-rttabs="true">
             <ul className="react-tabs__tab-list" role="tablist">
-              {portfolioCategories.map((cat) => (
-                <li
+                {portfolioCategories.map((cat, index) => {
+                const isActive = activeTab === cat;
+                return (
+                  <li
                   key={cat}
                   role="tab"
-                  className={
-                    activeTab === cat
-                      ? "react-tabs__tab react-tabs__tab--selected"
-                      : "react-tabs__tab"
-                  }
+                  id={`tab:r1:${index}`}
+                  aria-selected={isActive}
+                  aria-disabled="false"
+                  aria-controls={`panel:r1:${index}`}
+                  data-rttab="true"
+                  tabIndex={isActive ? 0 : -1}
+                  className={isActive ? "react-tabs__tab react-tabs__tab--selected" : "react-tabs__tab"}
                   onClick={() => setActiveTab(cat)}
-                >
-                  {cat}
+                  >
+                    {cat}
                 </li>
-              ))}
+                );
+                })}
             </ul>
-
             <div className="list_wrapper">
+                <div className="react-tabs__tab-panel react-tabs__tab-panel--selected"
+                role="tabpanel"
+                id={`panel:r1:${portfolioCategories.indexOf(activeTab)}`}
+                aria-labelledby={`tab:r1:${portfolioCategories.indexOf(activeTab)}`}
+                >
               <Gallery>
                 <ul className="portfolio_list">
                   {filtered.map((item, idx) => (
@@ -111,6 +120,8 @@ export default function Portfolio() {
                   ))}
                 </ul>
               </Gallery>
+              </div>
+             </div>
             </div>
           </div>
         </div>
