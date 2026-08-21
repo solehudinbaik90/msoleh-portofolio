@@ -20,20 +20,8 @@ export default function Service() {
                     <h3 className="title">{s.title}</h3>
                     <p className="text">{s.text}</p>
                     <div className="msoleh_tm_read_more">
-                      <button
-                        type="button"
-                        onClick={() => setSelected(s)}
-                        style={{
-                          background: "none",
-                          border: "none",
-                          padding: 0,
-                          font: "inherit",
-                          cursor: "pointer",
-                          color: "inherit",
-                          textAlign: "inherit"
-                        }}
-                      >
-                        <span>Lebih Lengkap</span>
+                      <button onClick={() => setSelected(item)}>
+                        <span>Buka</span>
                       </button>
                     </div>
                   </div>
