@@ -20,8 +20,8 @@ export default function Service() {
                     <h3 className="title">{s.title}</h3>
                     <p className="text">{s.text}</p>
                     <div className="msoleh_tm_read_more">
-                      <button onClick={() => setSelected(item)}>
-                        <span>Buka</span>
+                      <button onClick={() => setSelected(s)}>
+                        <span>buka</span>
                       </button>
                     </div>
                   </div>
