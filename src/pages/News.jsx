@@ -37,21 +37,15 @@ export default function News() {
                   </div>
                   <h3 className="title">{item.title}</h3>
                   <div className="msoleh_tm_read_more">
-                    <button 
-                      type="button"
-                      onClick={() => setSelected(item)} 
-                      style={{
-                        background: "none",
-                        border: "none",
-                        padding: 0,
-                        font: "inherit",
-                        cursor: "pointer",
-                        color: "inherit",
-                        textAlign: "inherit"
+                    <a
+                      href="#"
+                      onClick={(e) => {
+                      e.preventDefault();
+                      setSelected(item);
                       }}
-                    >
-                      <span>Buka</span>
-                    </button>
+                     >
+                        <span>Buka</span>
+                    </a>
                   </div>
                 </div>
               </div>
